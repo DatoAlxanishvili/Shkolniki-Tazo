@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Schoold Helper</string>
+    <string name="action_mid">მათემატიკა</string>
+    <string name="action_left">ფიზიკა</string>
+    <string name="action_right">ქიმია</string>
+
+
+</resources>
