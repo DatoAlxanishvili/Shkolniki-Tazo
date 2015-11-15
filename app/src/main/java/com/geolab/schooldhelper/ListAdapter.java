@@ -4,6 +4,7 @@ package com.geolab.schooldhelper;
  * Created by dalkh on 14-Nov-15.
  */
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -53,7 +54,7 @@ public class ListAdapter extends BaseAdapter {
             itemView = View.inflate(context, R.layout.list_item, null);
             ImageView ImageView = (ImageView) itemView.findViewById(R.id.formula);
             TextView DescriptionView = (TextView) itemView.findViewById(R.id.description);
-            
+            DescriptionView.setPaintFlags(DescriptionView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
             holder = new ViewHolder();
             holder.ImageView = ImageView;

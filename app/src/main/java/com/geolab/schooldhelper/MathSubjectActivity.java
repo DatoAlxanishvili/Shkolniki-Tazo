@@ -26,18 +26,17 @@ public class MathSubjectActivity extends AppCompatActivity {
     { Intent intent = new Intent(MathSubjectActivity.this,SubjectList.class);
         intent.putExtra("subSubject", st);
         startActivity(intent);
-        this.finish();
     }
     public void onClick(View v) {
         String subjectName = "";
         switch (v.getId()) {
             case R.id.algebra:
-                subjectName = "math";
+                subjectName = "algebra";
                 sendName(subjectName);
                 break;
 
             case R.id.geometry:
-                subjectName = "math";
+                subjectName = "geometry";
                 sendName(subjectName);
                 break;
 

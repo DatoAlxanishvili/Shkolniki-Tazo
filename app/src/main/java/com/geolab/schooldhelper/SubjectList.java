@@ -27,18 +27,23 @@ import java.util.ArrayList;
 
 public class SubjectList extends AppCompatActivity {
     private ProgressDialog progress;
+    private static  ArrayList<FormulaObj> formulaObjs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_list);
-        Bundle bundle= getIntent().getExtras();
-        String subSubjectName = getIntent().getStringExtra("subSubject");
+        android.support.v7.app.ActionBar m_myActionBar= getSupportActionBar();
+
+        if (m_myActionBar != null) {
+            m_myActionBar.hide();
+        }
+
+        final String subSubjectName = getIntent().getStringExtra("subSubject");
 
         final Context ctx = this;
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-        final ArrayList<FormulaObj> formulaObjs = new ArrayList<>();
+        final ListView listview = (ListView) findViewById(R.id.formulaList);
+        final ListAdapter listAdapter = new ListAdapter(SubjectList.this,formulaObjs);
 
         String lastUrl = "http://imerimpex.ge/school/index.php?table="+subSubjectName;
 
@@ -54,7 +59,7 @@ public class SubjectList extends AppCompatActivity {
                     try {
                         obj = jsonArray.getJSONObject(i);
                         descriptionL = obj.getString("name");
-                        imageL = obj.getString("pic");
+                        imageL ="http://imerimpex.ge/school/img/"+subSubjectName+"/"+obj.getString("pic");
 
                         FormulaObj productObjs1 = new FormulaObj(descriptionL,imageL);
                         formulaObjs.add(productObjs1);
@@ -65,6 +70,7 @@ public class SubjectList extends AppCompatActivity {
 
                 }
 
+                listview.setAdapter(listAdapter);
                 progress.dismiss();
             }
         },
@@ -74,17 +80,19 @@ public class SubjectList extends AppCompatActivity {
                         volleyError.getCause();
                     }
                 });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(request);
-        progress = ProgressDialog.show(ctx, "áƒ“áƒáƒ˜áƒªáƒáƒ“áƒ”áƒ—", "áƒ’áƒ—áƒ®áƒáƒ•áƒ— áƒ“áƒáƒ˜áƒªáƒáƒ“áƒáƒ—");
-        ListAdapter listAdapter = null;
-        ListView listview = (ListView) findViewById(R.id.formulaList);
-        listAdapter = new ListAdapter(SubjectList.this,formulaObjs);
-        listview.setAdapter(listAdapter);
-    }
-
-
-
+        progress = ProgressDialog.show(ctx, "იტვირთება", "გთხოვთ დაელოდოთ ჩამოტვირთვას");
 
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        formulaObjs.clear();
+        this.finish();
+    }
+}
 

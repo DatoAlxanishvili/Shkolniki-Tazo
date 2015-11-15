@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ebm="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="@drawable/desk"
+    android:background="@drawable/background"
     >
 
     <lt.lemonlabs.android.expandablebuttonmenu.ExpandableMenuOverlay
@@ -32,14 +32,44 @@
         ebm:midButtonText="@string/action_mid"
         ebm:rightButtonText="@string/action_right"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        >
 
     <ImageView
-        android:layout_width="wrap_content"
+
+        android:layout_width="244dp"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
+        android:paddingBottom="100dp"
          android:src="@drawable/book"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
         />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="გიგო"
+            android:textSize="40sp"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+
+            android:layout_marginTop="-100dp" />
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="აირჩიეთ საგანი"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"/>
+
 </RelativeLayout>

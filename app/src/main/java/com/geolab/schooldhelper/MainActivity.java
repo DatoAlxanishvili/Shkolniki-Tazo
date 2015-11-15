@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity{
 
                         break;
                     case LEFT:
-                        intent= new Intent(MainActivity.this,PhysSubjectActivity.class);
+                        intent= new Intent(MainActivity.this,SubjectList.class);
+                        intent.putExtra("subSubject", "physics");
                         startActivity(intent);
 
                         break;
